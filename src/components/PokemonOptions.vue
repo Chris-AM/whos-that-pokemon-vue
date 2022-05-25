@@ -1,17 +1,24 @@
 <template>
     <div class="options-container">
         <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
+            <!-- hiki means the counter for small or medium animals (pokemon) in japanese -->
+            <li v-for="hiki in pokemon" 
+            :key="hiki.id" 
+            @click="$emit('selection', hiki.id)">
+                {{hiki.name}}
+            </li>
         </ul>
     </div>
 </template>
 
 <script>
 export default {
-
+    props: {
+        pokemon: {
+            type: Array,
+            required: true
+        }
+    }
 }
 </script>
 

@@ -2,8 +2,6 @@ import { shallowMount } from "@vue/test-utils"
 import PokemonPicture from "@/components/PokemonPicture";
 
 describe('Pokemon Picture Component', () => {
-
-    
     test('Should match the snapshot', () => {
         const wrapper = shallowMount(PokemonPicture, {
             props: {
@@ -12,7 +10,6 @@ describe('Pokemon Picture Component', () => {
             }
         })
         expect(wrapper.html()).toMatchSnapshot()
-
     })    
     test('Should show hidden image and 100th pokemon', () => {
         const wrapper = shallowMount(PokemonPicture, {
@@ -33,11 +30,12 @@ describe('Pokemon Picture Component', () => {
         const wrapper = shallowMount(PokemonPicture, {
             props: {
                 pokemonId: 100,
-                showPokemon:true
+                showPokemon:false
             }
         }) 
-        
-        console.log(props);
+        const [imgFalse, imgTrue] = wrapper.findAll('img');
+        const src = imgFalse.attributes('src')
+        expect(src).toBe('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/100.svg')
     })
     test('Should show pokemon if true', () => {
         const wrapper = shallowMount(PokemonPicture, {

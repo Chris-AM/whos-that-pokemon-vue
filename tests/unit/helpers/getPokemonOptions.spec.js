@@ -1,4 +1,5 @@
 import getPokemonOptions, { getPokemon, getPokemonNames } from "@/helpers/getPokemonOptions";
+import { pokemon } from "../mocks/pokemon.mock";
 describe('get Pokemon Options helper', () => {
 
     const allPokemon = getPokemon();
@@ -12,12 +13,7 @@ describe('get Pokemon Options helper', () => {
     })
     test('should return an array of 4 elements with pokemon names', async () => {
         const pokemonNames = await getPokemonNames([1, 2, 3, 4]);
-        expect(pokemonNames).toStrictEqual([
-            { id: 1, name: 'bulbasaur' },
-            { id: 2, name: 'ivysaur' },
-            { id: 3, name: 'venusaur' },
-            { id: 4, name: 'charmander' }
-        ])
+        expect(pokemonNames).toStrictEqual(pokemon)
     })
     test('getPokemonOptions method should return a mixed array', async () => {
         const pokemonOptions = await getPokemonOptions();
